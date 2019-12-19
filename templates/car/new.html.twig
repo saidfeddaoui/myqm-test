@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}New Car{% endblock %}
+{% block page_breadcrumb %}{{ parent() }} <span> / create new car</span>{% endblock %}
+{% block body %}
+    <h1>Create new Car</h1>
+
+    {{ include('car/_form.html.twig') }}
+
+    <div class="form-group btn-group">
+        <a href="{{ path('car_index') }}" class="btn btn-success ">back to list</a>
+    </div>
+{% endblock %}

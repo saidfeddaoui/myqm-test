@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Car index{% endblock %}
+{% block page_breadcrumb %}{{ parent() }}{% endblock %}
+{% block body %}
+    <h1>List Of Cars</h1>
+
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Model</th>
+                <th>Marque</th>
+                <th>Color</th>
+                <th>Carburant</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.id }}</td>
+                <td>{{ car.name }}</td>
+                <td>{{ car.model }}</td>
+                <td><b>{{ car.marque.name }}</b></td>
+                <td>{{ car.color }}</td>
+                <td>{{ car.carburant }}</td>
+                <td>{{ car.createdAt ? car.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ car.updatedAt ? car.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('car_show', {'id': car.id}) }}" class="btn btn-default">show</a>
+                    <a href="{{ path('car_edit', {'id': car.id}) }}" class="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('car_new') }}" class="btn btn-primary">Create new car</a>
+{% endblock %}
