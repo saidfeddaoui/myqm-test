@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Tests\Controller;
-
+namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -21,7 +20,7 @@ class CarControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('POST', '/car/new/');
+        $client->request('POST', '/car/new');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
